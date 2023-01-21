@@ -2,7 +2,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #6d6c6c;
     padding: 15px;
     border: 2px solid black;
     margin: 5px 15px;
@@ -13,6 +12,14 @@
     color: black;
     transition: 0.1s;
     cursor: pointer;
+}
+
+.ContactBlock:nth-child(odd){
+    background: #6d6c6c;
+}
+
+.ContactBlock:nth-child(even){
+    background: #b0acac;
 }
 
 .ContactBlock_image{

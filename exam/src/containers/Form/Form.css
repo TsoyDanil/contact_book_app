@@ -30,3 +30,9 @@
     height: 225px;
     object-fit: cover;
 }
+.Submit_btn{
+    margin-top: 5px;
+}
+.GoBack_btn{
+    margin-top: 5px;
+}

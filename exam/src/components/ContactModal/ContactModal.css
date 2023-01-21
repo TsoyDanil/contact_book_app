@@ -1,7 +1,7 @@
 .ContactModal{
     position: fixed;
     z-index: 500;
-    background-color: white;
+    background-color: wheat;
     max-width: 700px;
     width: 100%;
     border: 1px solid #ccc;
@@ -10,6 +10,7 @@
     left: 15%;
     top: 20%;
     transition: all 0.3s ease-out;
+    border-radius: 5px;
 }
 
 .ContactData {

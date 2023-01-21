@@ -4,7 +4,8 @@ import IContact from '../../interfaces/IContact';
 import { AppState, useAppDispatch } from '../../store/store'
 import { useParams, useNavigate } from 'react-router-dom';
 import './Form.css'
-import { getContacts } from '../../store/contacts/contacts.slice';
+import { createContact, getContacts, updateContact } from '../../store/contacts/contacts.slice';
+import Loader from '../../components/UI/Loader/Loader';
 
 const Form: React.FunctionComponent = (): React.ReactElement => {
 
@@ -46,6 +47,15 @@ const Form: React.FunctionComponent = (): React.ReactElement => {
         navigate(-1)
     }
 
+    const submitData = (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault()
+        if (params.key !== undefined){
+            dispatch(updateContact({id: params.key, contactData: contact}))
+        } else{
+            dispatch(createContact(contact))
+        }
+    }
+
     useEffect(()=>{
         checkButton()
     },[contact])
@@ -68,9 +78,9 @@ const Form: React.FunctionComponent = (): React.ReactElement => {
         <div className='Form'>
             {
                 loading ?
-                <h1>Loading...</h1> :
+                <Loader/> :
                 <>
-                <form>
+                <form onSubmit={(event)=>{submitData(event)}}>
                     <div className='Form_inner_block'>
                         <p>Name</p>
                         <input value={contact?.name} type={'text'} placeholder={'Name...'} name={'name'} onChange={(event)=>{inputHandler(event)}}/>
@@ -91,12 +101,15 @@ const Form: React.FunctionComponent = (): React.ReactElement => {
                         src={contact?.photoSrc.trim() !== '' ? contact?.photoSrc : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5aJdWfJvezmp59gLwc76tpc7VWjOn-ceALA&usqp=CAU'} alt={contact?.name + 'profile_image'}
                     />
                     <button
+                        className='Submit_btn'
                         disabled  ={buttonDisabled}
                     >
-                        Save Changes
+                        {
+                            params.key !== undefined ? 'Save Changes' : 'Add To Contacts'
+                        }
                     </button>
                 </form>
-                <button onClick={goBack}>Go Back</button>
+                <button className='GoBack_btn' onClick={goBack}>Go Back</button>
                 </>
             }
         </div>

@@ -7,6 +7,7 @@ import ContactBlock from "../../components/ContactBlock/ContactBlock";
 import IContact from "../../interfaces/IContact";
 import { deleteContact } from "../../store/contacts/contacts.slice";
 import ContactModal from "../../components/ContactModal/ContactModal";
+import Loader from "../../components/UI/Loader/Loader";
 
 const ContactsList: React.FunctionComponent = (): React.ReactElement => {
 
@@ -52,10 +53,12 @@ const ContactsList: React.FunctionComponent = (): React.ReactElement => {
                 show={showModal}
             >   
                 <div className="Modal_container">
-                    <img className="Modal_image" src={targetedContact.photoSrc} alt={targetedContact.name + 'profile image'}/>
+                    <div className="Modal_image_frame">
+                        <img className="Modal_image" src={targetedContact.photoSrc} alt={targetedContact.name + 'profile image'}/>
+                    </div>
                     <div className="Modal_container_text_container">
                         <h1>{targetedContact.name}</h1>
-                        <p>{targetedContact.phone}</p>
+                        <p>+{targetedContact.phone}</p>
                         <p>{targetedContact.email}</p>
                         <div>
                             <button 
@@ -73,7 +76,7 @@ const ContactsList: React.FunctionComponent = (): React.ReactElement => {
             </ContactModal>
             {
                 loading ? 
-                <h1>loading...</h1> :
+                <Loader/> :
                 <>
                     {
                         Object.keys(contacts).length > 0?

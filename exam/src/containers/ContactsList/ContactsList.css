@@ -3,11 +3,21 @@
     position: relative;
 }
 
+.Modal_image_frame{
+    width: 200px;
+    height: 255px;
+    background: rgb(215, 214, 214);
+    margin-right: 10px;
+    padding: 2px;
+    border-radius: 5px;
+    border: 2px solid black;
+}
+
 .Modal_image{
     width: 200px;
     height: 255px;
     object-fit: cover;
-    margin-right: 10px;
+    border-radius: 5px;
 }
 
 .Modal_container_text_container{
@@ -15,6 +25,14 @@
     flex-direction: column;
     align-items:baseline;
     justify-content: space-between;
+}
+
+.Modal_container_text_container h1{
+    margin: 0;
+}
+
+.Modal_container_text_container p{
+    text-decoration: underline;
 }
 
 .Modal_container button{

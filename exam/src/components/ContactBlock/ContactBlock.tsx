@@ -4,7 +4,7 @@ import IContactBlockProps from './IContactBlockProps'
 
 const ContactBlock: React.FunctionComponent<IContactBlockProps> = (props): React.ReactElement => {
 
-    const imageRef = React.useRef<HTMLImageElement>(null)
+    const imageRef = useRef<HTMLImageElement>(null)
 
     const handlerError = () => {
         imageRef!.current!.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5aJdWfJvezmp59gLwc76tpc7VWjOn-ceALA&usqp=CAU'
