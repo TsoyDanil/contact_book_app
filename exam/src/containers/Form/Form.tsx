@@ -108,7 +108,9 @@ const Form: React.FunctionComponent = (): React.ReactElement => {
                         <input value={contact?.photoSrc} type={'text'} placeholder={'Image...'} name={'photoSrc'} onChange={(event)=>{inputHandler(event)}}/>
                     </div>
                     <img 
-                        src={contact?.photoSrc.trim() !== '' ? contact?.photoSrc : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5aJdWfJvezmp59gLwc76tpc7VWjOn-ceALA&usqp=CAU'} alt={contact?.name + 'profile_image'}
+                        className='FormImage'
+                        src={contact?.photoSrc.trim() !== '' ? contact?.photoSrc : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5aJdWfJvezmp59gLwc76tpc7VWjOn-ceALA&usqp=CAU'} 
+                        alt={contact?.name + 'profile_image'}
                     />
                     <button
                         className='Submit_btn'
