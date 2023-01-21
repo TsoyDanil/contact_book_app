@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import './ContactsList.css'
 import ContactBlock from "../../components/ContactBlock/ContactBlock";
 import IContact from "../../interfaces/IContact";
-import { getContacts } from "../../store/contacts/contacts.slice";
+import { deleteContact } from "../../store/contacts/contacts.slice";
 import ContactModal from "../../components/ContactModal/ContactModal";
 
 const ContactsList: React.FunctionComponent = (): React.ReactElement => {
@@ -32,7 +32,18 @@ const ContactsList: React.FunctionComponent = (): React.ReactElement => {
         setShowModal(false)        
         setTargetedContactId('')
         setTargetedContact({} as IContact)
+    }
 
+    const deleteContactHandler = () => {
+        dispatch(deleteContact(targetedContactId))
+        setShowModal(false)
+    }
+
+    const editContactHandler = () => {
+        setShowModal(false)
+        navigate({pathname: targetedContactId + '/edit'})
+        setTargetedContactId('')
+        setTargetedContact({} as IContact)
     }
 
     return(
@@ -47,8 +58,14 @@ const ContactsList: React.FunctionComponent = (): React.ReactElement => {
                         <p>{targetedContact.phone}</p>
                         <p>{targetedContact.email}</p>
                         <div>
-                            <button className="Edit_btn"></button>
-                            <button className="Delete_btn"></button>
+                            <button 
+                                className="Edit_btn"
+                                onClick={editContactHandler}
+                            ></button>
+                            <button 
+                                className="Delete_btn"
+                                onClick={deleteContactHandler}
+                            ></button>
                         </div>
                         <button className="Close_btn" onClick={closeContactInfo}></button>
                     </div>
