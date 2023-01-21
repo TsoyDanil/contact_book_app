@@ -2,13 +2,15 @@ import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import IContact from '../../interfaces/IContact';
 import { AppState, useAppDispatch } from '../../store/store'
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import './Form.css'
 import { getContacts } from '../../store/contacts/contacts.slice';
 
 const Form: React.FunctionComponent = (): React.ReactElement => {
 
     const dispatch = useAppDispatch()
+
+    const navigate = useNavigate()
 
     const params = useParams()
 
@@ -25,12 +27,6 @@ const Form: React.FunctionComponent = (): React.ReactElement => {
         }
     )
 
-    const handleImageError = () => {
-        setContact(prevState => {
-            return {...prevState, photoSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5aJdWfJvezmp59gLwc76tpc7VWjOn-ceALA&usqp=CAU'}
-        })
-    }
-
     const checkButton = (): void => {
         if (contact?.name.trim() === '' || contact?.email.trim() === '' || contact?.phone === null){
             setButtonDisabled(true)
@@ -46,6 +42,10 @@ const Form: React.FunctionComponent = (): React.ReactElement => {
         })
     }
 
+    const goBack = () => {
+        navigate(-1)
+    }
+
     useEffect(()=>{
         checkButton()
     },[contact])
@@ -55,17 +55,21 @@ const Form: React.FunctionComponent = (): React.ReactElement => {
             if (contacts[params.key] !== undefined){
                 setContact(contacts[params.key])
             }
+        } else if (params.key === undefined){
+            setContact({
+                name: '',
+                email: '',
+                phone: null,
+                photoSrc: ''
+            })
         }
-    }, [contacts, []])
-
-
-    
-
+    }, [contacts, params.key])
     return(
         <div className='Form'>
             {
                 loading ?
                 <h1>Loading...</h1> :
+                <>
                 <form>
                     <div className='Form_inner_block'>
                         <p>Name</p>
@@ -84,18 +88,16 @@ const Form: React.FunctionComponent = (): React.ReactElement => {
                         <input value={contact?.photoSrc} type={'text'} placeholder={'Image...'} name={'photoSrc'} onChange={(event)=>{inputHandler(event)}}/>
                     </div>
                     <img 
-                        src={contact?.photoSrc} alt={contact?.name + 'profile_image'}
-                        onError={handleImageError}
+                        src={contact?.photoSrc.trim() !== '' ? contact?.photoSrc : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5aJdWfJvezmp59gLwc76tpc7VWjOn-ceALA&usqp=CAU'} alt={contact?.name + 'profile_image'}
                     />
                     <button
                         disabled  ={buttonDisabled}
                     >
                         Save Changes
                     </button>
-                    <button>
-                        Go back
-                    </button>
                 </form>
+                <button onClick={goBack}>Go Back</button>
+                </>
             }
         </div>
     )
