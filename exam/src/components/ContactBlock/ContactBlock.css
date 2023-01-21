@@ -1,0 +1,34 @@
+.ContactBlock{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #6d6c6c;
+    padding: 15px;
+    border: 2px solid black;
+    margin: 5px 15px;
+    border: 1px solid;
+    padding: 0 0 0 15px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    color: black;
+    transition: 0.1s;
+    cursor: pointer;
+}
+
+.ContactBlock_image{
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.ContactBlock_innerContainer{
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+.ContactBlock:hover{
+    background: wheat;
+}

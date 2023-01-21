@@ -39,7 +39,7 @@
 
 .NavLink a:hover,
 .NavLink a:active,
-.NavLink a:active {
+.NavLink a:focus {
     background-color: rgb(84, 83, 83);
     border-bottom: 4px solid black;
     border-radius: 3px;
