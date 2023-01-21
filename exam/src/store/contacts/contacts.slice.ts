@@ -60,38 +60,18 @@ export const contactsSlice = createSlice({
             state.loading = false
             if (action.payload){
                 state.contacts = action.payload
+            } else{
+                state.contacts = {}
             }
         })
         .addCase(updateContact.pending, (state: IContactsState) => {
             state.loading = true
         })
-        .addCase(updateContact.rejected, (state: IContactsState) => {
-            state.loading = false
-        })
-        .addCase(updateContact.fulfilled, (state: IContactsState) => {
-            state.loading = false
-        })
         .addCase(deleteContact.pending, (state: IContactsState) => {
             state.loading = true
-        })
-        .addCase(deleteContact.rejected, (state: IContactsState) => {
-            state.loading = false
-        })
-        .addCase(deleteContact.fulfilled, (state: IContactsState) => {
-            state.loading = false
         })
         .addCase(createContact.pending, (state: IContactsState) => {
             state.loading = true
         })
-        .addCase(createContact.rejected, (state: IContactsState) => {
-            state.loading = false
-        })
-        .addCase(createContact.fulfilled, (state: IContactsState) => {
-            state.loading = false
-        })
     }
 })
-
-export const {
-
-} = contactsSlice.actions
