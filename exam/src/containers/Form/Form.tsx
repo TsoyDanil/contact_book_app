@@ -19,6 +19,10 @@ const Form: React.FunctionComponent = (): React.ReactElement => {
 
     const [buttonDisabled, setButtonDisabled] = useState<boolean>(true)
 
+    const memeArray: string[] = ['https://i.redd.it/svi2zx472xr41.jpg', 'https://i.redd.it/ckptnaso6cda1.jpg', 'https://preview.redd.it/hwurhp7crzf81.png?width=640&crop=smart&auto=webp&v=enabled&s=5aecd389807a19f88ae0716a79e41ec1d2a27d6d', 'https://preview.redd.it/jd25yqv8xsf31.jpg?width=640&crop=smart&auto=webp&v=enabled&s=b44abff46b860dd7889e4df3d421bbabbde34f1a']
+
+    const [meme, setMeme] = useState<any>(memeArray[Math.floor(Math.random()*memeArray.length)])
+
     const [contact, setContact] = useState<IContact>(
         {
             name: '',
@@ -74,6 +78,12 @@ const Form: React.FunctionComponent = (): React.ReactElement => {
             })
         }
     }, [contacts, params.key])
+
+
+    useEffect(() => {
+        setMeme(memeArray[Math.floor(Math.random()*memeArray.length)])
+    }, [])
+
     return(
         <div className='Form'>
             {
@@ -109,6 +119,9 @@ const Form: React.FunctionComponent = (): React.ReactElement => {
                         }
                     </button>
                 </form>
+                <div className='Meme_image'>
+                    <img src={meme} alt='Jiza'/>
+                </div>
                 <button className='GoBack_btn' onClick={goBack}>Go Back</button>
                 </>
             }
