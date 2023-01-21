@@ -1,0 +1,47 @@
+.Layout{
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid black;
+    background: grey;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.Layout_Links{
+    max-width: 300px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.NavLink{
+    margin-left: 10px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.NavLink a{
+    color: white;
+    height: 100%;
+    padding: 10px;
+    border-bottom: 4px solid transparent;
+    text-decoration: none;
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+}
+
+.NavLink a:hover,
+.NavLink a:active,
+.NavLink a:active {
+    background-color: rgb(84, 83, 83);
+    border-bottom: 4px solid black;
+    border-radius: 3px;
+    color: white;
+}
