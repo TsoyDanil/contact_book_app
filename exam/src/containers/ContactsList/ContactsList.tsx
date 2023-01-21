@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { AppState, useAppDispatch } from "../../store/store";
 import { useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";

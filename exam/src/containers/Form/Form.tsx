@@ -4,7 +4,7 @@ import IContact from '../../interfaces/IContact';
 import { AppState, useAppDispatch } from '../../store/store'
 import { useParams, useNavigate } from 'react-router-dom';
 import './Form.css'
-import { createContact, getContacts, updateContact } from '../../store/contacts/contacts.slice';
+import { createContact, updateContact } from '../../store/contacts/contacts.slice';
 import Loader from '../../components/UI/Loader/Loader';
 
 const Form: React.FunctionComponent = (): React.ReactElement => {
