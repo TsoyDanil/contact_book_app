@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { contactsApi } from "../api/contactsApi";
+import { contactsApi } from "../api/contactApi";
 
 
 const namespace = 'contacts'

@@ -2,6 +2,6 @@ import axios from "axios";
 import { apiUrl } from "./apiUrl";
 
 
-export const contactsInstance = axios.create({
+export const contactInstance = axios.create({
     baseURL: apiUrl + 'contacts'
 })

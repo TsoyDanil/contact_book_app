@@ -1,9 +1,8 @@
-import { contactsInstance } from "./instances"
-
+import { contactInstance } from "./instance"
 export const contactsApi = {
     getContacts: async()=> {
         try{
-            const response = await contactsInstance.get('.json')
+            const response = await contactInstance.get('.json')
             return response.data
         } catch(error){
             console.log(error)
