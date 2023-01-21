@@ -33,7 +33,7 @@ const Form: React.FunctionComponent = (): React.ReactElement => {
     )
 
     const checkButton = (): void => {
-        if (contact?.name.trim() === '' || contact?.email.trim() === '' || contact?.phone === null){
+        if (contact?.name.trim() === '' || contact?.email.trim() === '' || contact?.phone === null || contact?.photoSrc.trim() === ''){
             setButtonDisabled(true)
             return
         }
